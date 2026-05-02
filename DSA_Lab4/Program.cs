@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DSA_Lab4 {
+    internal class Program {
+        static void Main(string[] args) {
+            Console.WriteLine("\n!!!GRAPH!!!\n");
+            List<List<int>> adjGraph = new List<List<int>> {
+                new List<int>() { 1, 3 },
+                new List<int>() { 0, 2 },
+                new List<int>() { 1, 3, 4 },
+                new List<int>() { 0, 2 },
+                new List<int>() { 2 }
+            };
+
+            foreach (var component in adjGraph) {
+                Console.Write($"Node {adjGraph.IndexOf(component)}\nLinks: ");
+                foreach (var link in component) {
+                    Console.Write(link + " ");
+                }
+                Console.WriteLine("\n");
+            }
+
+            GraphTools graphTools = new GraphTools(adjGraph);
+            List<bool> visited = new List<bool>();
+            visited.AddRange(Enumerable.Repeat(false, adjGraph.Count));
+
+            Console.WriteLine("\n!!!There is any cycles in a Graph!!!\n");
+            Console.WriteLine(graphTools.HasCycle_DFS(0, visited, -1));
+
+            Console.WriteLine("\n!!!CITIES!!!\n");
+
+            List<List<int>> citiesGraph = new List<List<int>> {
+                new List<int>() { 1, 3 },
+                new List<int>() { 0, 2, 4 },
+                new List<int>() { 1, 5 },
+                new List<int>() { 0, 4 },
+                new List<int>() { 1, 3, 6 },
+                new List<int>() { 2, 7 },
+                new List<int>() { 4, 7 },
+                new List<int>() { 5, 6 },
+            };
+
+            foreach (var city in citiesGraph) {
+                Console.Write($"City {citiesGraph.IndexOf(city)}\nConnected with: ");
+                foreach (var roadTo in city) {
+                    Console.Write(roadTo + " ");
+                }
+                Console.WriteLine("\n");
+            }
+
+            Console.WriteLine("\n!!!TASK 2 IN PROGRESS!!!\n");
+
+            Console.WriteLine("\n!!!TASK 3 IN PROGRESS!!!\n");
+
+            Console.WriteLine("\n\nPress Enter to exit...\n");
+            Console.ReadLine();
+
+        }
+    }
+}
