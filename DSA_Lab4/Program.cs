@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace DSA_Lab4 {
     internal class Program {
         static void Main(string[] args) {
+            Console.WriteLine("\n!!!TASK 1!!!\n");
             Console.WriteLine("\n!!!GRAPH!!!\n");
             List<List<int>> adjGraph = new List<List<int>> {
                 new List<int>() { 1, 3 },
@@ -32,6 +33,8 @@ namespace DSA_Lab4 {
             Console.WriteLine("\n!!!There is any cycles in a Graph!!!\n");
             Console.WriteLine(graphTools.HasCycle_DFS(0, visited, -1));
 
+            Console.WriteLine("\n!!!TASK 2!!!\n");
+
             Console.WriteLine("\n!!!CITIES!!!\n");
 
             List<List<int>> citiesGraph = new List<List<int>> {
@@ -52,8 +55,6 @@ namespace DSA_Lab4 {
                 }
                 Console.WriteLine("\n");
             }
-
-            Console.WriteLine("\n!!!TASK 2!!!\n");
 
             GraphTools cityTools = new GraphTools(citiesGraph);
             List<int> path = cityTools.GetShortestPath(0, 7);
@@ -77,7 +78,38 @@ namespace DSA_Lab4 {
             }
             Console.WriteLine("\n");
 
-            Console.WriteLine("\n!!!TASK 3 IS UNDER CONSTRUCTION!!!\n");
+            Console.WriteLine("\n!!!TASK 3a!!!\n");
+
+            Console.WriteLine("Graph: \n");
+
+            List<List<int>> directedGraph = new List<List<int>> {
+                new List<int>() { 1 },    // 0 вказує на 1
+                new List<int>() { 2 },    // 1 вказує на 2
+                new List<int>() { }       // 2 нікуди не вказує
+            };
+
+            foreach (var component in directedGraph) {
+                Console.Write($"Node {directedGraph.IndexOf(component)}\nLinks: ");
+                foreach (var link in component) {
+                    Console.Write(link + " ");
+                }
+                Console.WriteLine("\n");
+            }
+
+            GraphTools dirTools = new GraphTools(directedGraph);
+
+            List<List<int>> transponsedGraph = dirTools.TransponGraph();
+
+            Console.WriteLine("Results: \n");
+
+            foreach (var component in transponsedGraph) {
+                Console.Write($"Node {transponsedGraph.IndexOf(component)}\nLinks: ");
+                foreach (var link in component) {
+                    Console.Write(link + " ");
+                }
+                Console.WriteLine("\n");
+            }
+
 
             Console.WriteLine("\n\nPress Enter to exit...\n");
             Console.ReadLine();

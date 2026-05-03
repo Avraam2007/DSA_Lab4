@@ -136,8 +136,20 @@ namespace DSA_Lab4 {
             return path;
         }
 
-        public void TransponGraph() {
-            return;
+        public List<List<int>> TransponGraph() {
+            List<List<int>> transponsedGraph = new List<List<int>>();
+
+            for (int i = 0; i < Graph.Count; i++) {
+                transponsedGraph.Add(new List<int>());
+            }
+
+
+            foreach (var vertex in Graph) {
+                foreach (int item in vertex) {
+                    transponsedGraph[item].Add(Graph.IndexOf(vertex));
+                }
+            }
+            return transponsedGraph;
         }
 
     }
