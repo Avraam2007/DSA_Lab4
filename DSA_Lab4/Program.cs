@@ -53,9 +53,31 @@ namespace DSA_Lab4 {
                 Console.WriteLine("\n");
             }
 
-            Console.WriteLine("\n!!!TASK 2 IN PROGRESS!!!\n");
+            Console.WriteLine("\n!!!TASK 2!!!\n");
 
-            Console.WriteLine("\n!!!TASK 3 IN PROGRESS!!!\n");
+            GraphTools cityTools = new GraphTools(citiesGraph);
+            List<int> path = cityTools.GetShortestPath(0, 7);
+
+            Console.WriteLine("Shortest path between 0 and 7: ");
+            foreach (var city in path) {
+                Console.Write(city + " ");
+            }
+            Console.WriteLine("\n");
+
+            for (int i = 0; i < citiesGraph.Count; i++) {
+                path = cityTools.GetShortestPath(0, i);
+                Console.WriteLine($"Minimal road amount to reach from 0 to {i}: {path.Count - 1}");
+                path = null;
+            }
+
+            path = cityTools.FindPathWithDFS(0, 7);
+            Console.WriteLine("Shortest path between 0 and 7 (DFS): ");
+            foreach (var city in path) {
+                Console.Write(city + " ");
+            }
+            Console.WriteLine("\n");
+
+            Console.WriteLine("\n!!!TASK 3 IS UNDER CONSTRUCTION!!!\n");
 
             Console.WriteLine("\n\nPress Enter to exit...\n");
             Console.ReadLine();
